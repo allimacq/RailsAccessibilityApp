@@ -7,4 +7,6 @@ class StatesController < ApplicationController
       cookies.delete :state
       @state = State.find(params[:id])
       cookies[:state_id] = @state.id
+    end
+    
   end
