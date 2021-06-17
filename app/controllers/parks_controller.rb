@@ -33,6 +33,7 @@ class ParksController < ApplicationController
 
     def update
         @park = Park.find(params[:id])
+        @state = cookies[:state_id]
         @park.update(parks_params)
         redirect_to park_path(@park)
     end

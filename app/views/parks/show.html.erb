@@ -17,10 +17,13 @@
         <% end %>
     </p>
 
-        <p><%= link_to "Add Review for #{@park.name}", new_park_review_path(@park, @review) %></p><br>
 
     <p>
-        <% if park_author(@park) %>
+        <% if user_signed_in? %>
+            <p><%= link_to "Add Review for #{@park.name}", new_park_review_path(@park, @review) %></p><br>
+        <% end %>
+          
+        <% if user_signed_in? && park_author(@park) %>
             <%= link_to "Edit #{@park.name}", edit_park_path(@park) %>
             <%= button_to "Delete #{@park.name}", park_path(@park), method: :delete %>
         <% end %>
