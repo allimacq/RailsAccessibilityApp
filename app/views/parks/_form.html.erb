@@ -1,0 +1,11 @@
+<%= form_for @park do |f| %>
+  <%= render "error" %>
+  <strong><%= f.label "Park Name" %><br></strong>
+  <%= f.text_field :name %><br><br>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :state_id, value: @state %>
+  <strong><%= f.label "Select City" %></strong><br>
+  <%= f.collection_select :city_id, City.where(state_id: @state), :id, :name %><br><br>
+  <%= f.submit %>
+
+<% end %>

@@ -1,0 +1,8 @@
+<h1>Create New Park for <%= "#{State.find_by_id(@state).name}" if @state %></h1>
+<body>
+    <%= render 'form' %>
+</body>
+
+<footer>
+    <%= link_to "Go Home", root_path %>
+</footer>

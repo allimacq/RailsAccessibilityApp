@@ -1,0 +1,16 @@
+<header> <%= render 'users/links' %> </header>
+<h1><%= @state.name %>'s Parks</h1>
+<h3><%= @state.parks.count %> Parks Found </h3>
+
+
+<ul>
+    <% @state.parks.each do |park| %>
+        <li><strong><%= link_to "#{park.name}", park_path(park) %></strong></li>
+    <% end %>
+</ul>
+
+<% if user_signed_in? %>
+    <%= link_to "Create New Park for #{@state.name}", new_park_path %>
+<% end %>
+
+<%= link_to "Go Home", root_path %>
