@@ -1,0 +1,19 @@
+<h1><%= @review.title %></h1>
+<h4><%= @review.display_accessibility(@user, @activity, @park) %> </h4>
+
+<h5><%= @review.stars %></h5>
+<p><%= @review.review %></p>
+
+<%  if user_signed_in? && !review_author(@review) %>
+    <%= link_to "Leave a Review For #{@park.name}", new_park_review_path(@park, @review) %><br>
+<% elsif review_author(@review) %>
+    <%= link_to "Edit Your Review", edit_park_review_path(@park, @review) %><br>
+    <%= button_to "Delete Your Review", park_review_path(@park, @review), method: :delete %>
+<% end %>
+<br>
+
+
+<footer><%= link_to "Go Back To #{@park.name}", park_path(@park) %><br>
+<%= link_to "View Other Parks in #{@park.state.name}", state_path(@park.state) %><br>
+<%= link_to "Home", root_path %><br>
+<%= render "users/links" %><br></footer>
