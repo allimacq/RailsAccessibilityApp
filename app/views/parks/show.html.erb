@@ -1,0 +1,34 @@
+<header><h1><%= @park.name %></h1>
+<h2><%= @park.city.name%> - <%= @park.state.name%></h2></header>
+
+    <body>
+
+
+    <h4>Filter Park Reviews by Accessibility :</h4>
+    <%= form_tag("/parks/#{@park.id}", method: "get") do %>
+        <%= select_tag "accessible", options_for_select( { "Accessible" => true, "Not Accessible" => false, " " => " "}) %>
+
+        <%= submit_tag "Filter Reviews" %>
+    <% end %>
+
+    <p>
+        <% @park_reviews.each do |review| %>
+            <%= link_to "#{review.title} - #{review.rating} stars", park_review_path(@park, review) %><br>            
+        <% end %>
+    </p>
+
+        <p><%= link_to "Add Review for #{@park.name}", new_park_review_path(@park, @review) %></p><br>
+
+    <p>
+        <% if park_author(@park) %>
+            <%= link_to "Edit #{@park.name}", edit_park_path(@park) %>
+            <%= button_to "Delete #{@park.name}", park_path(@park), method: :delete %>
+        <% end %>
+    </p>
+
+</body>
+
+<footer>
+    <%= link_to "View Other Parks in #{@park.state.name}", state_path(@park.state_id)%>
+    <%= link_to "Home", root_path %>
+</footer>
