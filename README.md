@@ -1,24 +1,4 @@
 # README
+An application that lets users add and find parks and activities throughout the US with the added feature of finding accessible activities. Users can create parks and rate and review activities at parks.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To use, fork and clone, seed database and start the rails server.
